@@ -1,0 +1,125 @@
+/* style.css */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { overflow: hidden; background: #000; }
+
+/* SOBRE */
+#sobre {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.envelope {
+  width: 300px; height: 200px;
+  background: #fff;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.envelope:before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #ff758c;
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+}
+.envelope span {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2em;
+  color: #ff3d6d;
+}
+
+/* CONTENEDOR */
+.container {
+  display: flex;
+  width: 500vw;
+  height: 100vh;
+  transition: transform 0.7s ease;
+}
+
+.page {
+  width: 100vw; height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  color: white;
+  position: relative;
+}
+
+/* DECORACIONES */
+.decor {
+  position: absolute;
+  font-size: 35px;
+  opacity: 0.7;
+}
+.left { left: 20px; }
+.right { right: 20px; }
+
+/* TEXTO */
+h1 { font-size: 3em; margin-bottom: 15px; }
+p { font-size: 1.4em; max-width: 650px; }
+
+/* FOTO */
+.foto {
+  width: 220px; height: 220px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin: 25px 0;
+  border: 5px solid rgba(255, 255, 255, 0.6);
+}
+
+/* BOTONES */
+button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  background: white;
+  color: #ff3d6d;
+  transition: 0.3s;
+}
+button:hover { transform: scale(1.1); }
+
+/* COLORES DE PAGINAS */
+.page1 { background: linear-gradient(135deg, #ff758c, #ff7eb3); }
+.page2 { background: linear-gradient(135deg, #43cea2, #185a9d); }
+.page3 { background: linear-gradient(135deg, #f7971e, #ffd200); }
+.page4 { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
+.page5 { background: linear-gradient(135deg, #ff512f, #dd2476); }
+
+/* OPCIONES SI/NO */
+.opciones { display: flex; gap: 30px; margin-top: 30px; }
+.box {
+  width: 120px; height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.si { background: #4CAF50; }
+.no { background: #e53935; }
+
+/* TULIPANES */
+.tulipan {
+  position: fixed;
+  top: -50px;
+  font-size: 28px;
+  animation: caer linear infinite;
+}
+@keyframes caer {
+  to { transform: translateY(110vh); }
+}

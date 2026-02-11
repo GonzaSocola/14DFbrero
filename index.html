@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Dayana ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="sobre" onclick="abrirSobre()">
+        <div class="envelope">
+            <span>Abrir Aquí </span>
+        </div>
+    </div>
+
+    <div class="container" id="container">
+
+        <div class="page page1">
+            <div class="decor left">❤️🌷✨</div>
+            <div class="decor right">💕🌷✨</div>
+            <h1>Hola Day Villarreyes Orozco ❤️</h1>
+            <img src="foto1.jpeg" class="foto" alt="Foto 1">
+            <p>Desde que nos llegamos a conocer, mi vida se lleno de color, risas y sonrisas. Ahora eres la segunda mujer mas importante de mi vida. Le agradezco a mi padre que me obligo a ir a ese viaje, porque sino no te hubiera conocido. Aprendí a ver la vida con otros ojos. Las dos veces que nos vamos viendo la he pasado de lo mejor y se que vendran muchas mas mejores, me das paz y calma, Te amitoooo.</p>
+            <button onclick="nextPage()">Siguiente ➜</button>
+        </div>
+
+        <div class="page page2">
+            <div class="decor left">💖🌷</div>
+            <div class="decor right">💫🌷</div>
+            <h1>Mi Blanquita Hermosa ✨</h1>
+            <img src="foto2.jpeg" class="foto" alt="Foto 2">
+            <p>Todo contigo se siente más bonito, más real y más sincero. A tu lado, incluso lo simple tiene un valor inmenso. Ya tienes un lugar en mi corazón y nadie te sacara de ahi.</p>
+            <button onclick="nextPage()">Siguiente ➜</button>
+        </div>
+
+        <div class="page page3">
+            <div class="decor left">❤️🌸</div>
+            <div class="decor right">💕🌸</div>
+            <h1>Me encantas 💕</h1>
+            <img src="foto3.jpeg" class="foto" alt="Foto 3">
+            <p>Me tienes loko Mami, con solo pensar en ti mi corazón late demasiado. Tu nombre se me cruza en la mente y todo pierde el control. Eres ese desorden bonito que llegó para quedarse en mi pecho, a pesar de todas las discusiones siempre te amareeee.</p>
+            <button onclick="nextPage()">Siguiente ➜</button>
+        </div>
+
+        <div class="page page4">
+            <div class="decor left">💫🌷</div>
+            <div class="decor right">💖🌷</div>
+            <h1>Juntos siempre seremos un equipo 💫</h1>
+            <img src="foto4.jpeg" class="foto" alt="Foto 4">
+            <p>Juntos siempre seremos un equipo, en las buenas y en las malas. Cuando uno caiga, el otro estará ahí para levantarlo sin dudar. Aprenderemos, creceremos y sanaremos caminando del mismo lado. Porque mientras vayamos de la mano, ningún miedo será más fuerte. Lo nuestro no es solo amor, es compañerismo y lealtad.</p>
+            <button onclick="nextPage()">Siguiente ➜</button>
+        </div>
+
+        <div class="page page5">
+            <h1>💖 Dayana Villarreyes 💖</h1>
+            <img src="10f7f8e4-e6a9-44a1-8387-0075451789ed.jpg" class="foto" alt="Foto Final">
+            <p>¿Quieres ser mi 14 de febrero?</p>
+
+            <div class="opciones">
+                <div class="box si" onclick="aceptar()">SÍ 💘</div>
+                <div class="box no" onclick="rechazar()">NO 💔</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let page = 0;
+        const frasesNo = [
+            "¿Por qué no? 🥺",
+            "Ándale, di que sí 💖",
+            "Prometo hacerte sonreír, diga que si 🌸",
+            "Solo inténtalo conmigo, si? ❤️",
+            "Te haré feliz, lo juro ✨",
+            "No seas cruel 💔",
+            "Yo sé que en el fondo quieres 😳",
+            "Dame una oportunidad 💫",
+            "Será un día bonito juntos 🌷",
+            "Mi corazón dice que sí 💕"
+        ];
+
+        function abrirSobre() {
+            document.getElementById("sobre").style.display = "none";
+        }
+
+        function nextPage() {
+            page++;
+            document.getElementById("container").style.transform = `translateX(-${page * 100}vw)`;
+        }
+
+        function aceptar() {
+            alert("Gracias por aceptar Te amitooooo❤️");
+        }
+
+        function rechazar() {
+            const msg = frasesNo[Math.floor(Math.random() * frasesNo.length)];
+            alert(msg);
+        }
+
+        /* Lluvia de tulipanes */
+        for (let i = 0; i < 25; i++) {
+            let t = document.createElement("div");
+            t.className = "tulipan";
+            t.innerHTML = "🌷";
+            t.style.left = Math.random() * 100 + "vw";
+            t.style.animationDuration = (4 + Math.random() * 4) + "s";
+            document.body.appendChild(t);
+        }
+    </script>
+
+</body>
+</html>
