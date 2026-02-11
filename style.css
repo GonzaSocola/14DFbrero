@@ -18,7 +18,11 @@ body { overflow: hidden; background: #000; }
   position: relative;
   cursor: pointer;
   border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
 }
+.envelope:hover { transform: scale(1.05); }
+
 .envelope:before {
   content: "";
   position: absolute;
@@ -29,11 +33,9 @@ body { overflow: hidden; background: #000; }
 }
 .envelope span {
   position: absolute;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
-  font-size: 1.2em;
-  color: #ff3d6d;
+  bottom: 20px; width: 100%;
+  text-align: center; font-size: 1.2em;
+  color: #ff3d6d; font-weight: bold;
 }
 
 /* CONTENEDOR */
@@ -41,17 +43,19 @@ body { overflow: hidden; background: #000; }
   display: flex;
   width: 500vw;
   height: 100vh;
-  transition: transform 0.7s ease;
+  /* dvh ayuda en celulares modernos */
+  height: 100dvh; 
+  transition: transform 0.7s ease-in-out;
 }
 
 .page {
-  width: 100vw; height: 100vh;
+  width: 100vw; height: 100vh; height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 40px;
+  padding: 20px; /* Menos padding para celulares */
   color: white;
   position: relative;
 }
@@ -59,57 +63,85 @@ body { overflow: hidden; background: #000; }
 /* DECORACIONES */
 .decor {
   position: absolute;
-  font-size: 35px;
-  opacity: 0.7;
+  font-size: 25px; /* Más pequeño para que no estorbe */
+  opacity: 0.8;
+  top: 20px;
 }
 .left { left: 20px; }
 .right { right: 20px; }
 
 /* TEXTO */
-h1 { font-size: 3em; margin-bottom: 15px; }
-p { font-size: 1.4em; max-width: 650px; }
+h1 { 
+  font-size: 2.2em; 
+  margin-bottom: 10px; 
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
 
-/* FOTO */
+p { 
+  font-size: 1.1em; 
+  max-width: 90%; 
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.small-text {
+    font-size: 0.95em;
+    margin-top: 5px;
+}
+
+/* FOTO RESPONSIVE */
 .foto {
-  width: 220px; height: 220px;
-  border-radius: 20px;
+  width: 220px; 
+  height: 220px;
+  /* Esto asegura que no se salga en pantallas muy pequeñas */
+  max-width: 70vw; 
+  max-height: 70vw;
+  border-radius: 15px;
   object-fit: cover;
-  margin: 25px 0;
-  border: 5px solid rgba(255, 255, 255, 0.6);
+  margin: 15px 0;
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* BOTONES */
 button {
-  padding: 12px 28px;
+  padding: 12px 30px;
   border: none;
-  border-radius: 25px;
-  font-size: 1.1em;
+  border-radius: 50px;
+  font-size: 1em;
+  font-weight: bold;
   cursor: pointer;
   background: white;
   color: #ff3d6d;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   transition: 0.3s;
+  margin-top: 10px;
 }
-button:hover { transform: scale(1.1); }
+button:active { transform: scale(0.95); }
 
 /* COLORES DE PAGINAS */
-.page1 { background: linear-gradient(135deg, #ff758c, #ff7eb3); }
-.page2 { background: linear-gradient(135deg, #43cea2, #185a9d); }
-.page3 { background: linear-gradient(135deg, #f7971e, #ffd200); }
-.page4 { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
-.page5 { background: linear-gradient(135deg, #ff512f, #dd2476); }
+.page1 { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
+.page2 { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+.page3 { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
+.page4 { background: linear-gradient(135deg, #e0c3fc, #8ec5fc); }
+.page5 { background: linear-gradient(135deg, #ff5858, #f09819); }
 
 /* OPCIONES SI/NO */
-.opciones { display: flex; gap: 30px; margin-top: 30px; }
+.opciones { display: flex; gap: 20px; margin-top: 20px; }
 .box {
-  width: 120px; height: 120px;
+  width: 100px; height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.4em;
+  font-size: 1.5em;
   font-weight: bold;
   border-radius: 15px;
   cursor: pointer;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
 }
+.box:active { transform: scale(0.9); }
 .si { background: #4CAF50; }
 .no { background: #e53935; }
 
@@ -117,9 +149,31 @@ button:hover { transform: scale(1.1); }
 .tulipan {
   position: fixed;
   top: -50px;
-  font-size: 28px;
+  font-size: 24px;
   animation: caer linear infinite;
+  z-index: 5;
 }
 @keyframes caer {
-  to { transform: translateY(110vh); }
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* --- MEDIA QUERIES (AJUSTES PARA CELULAR) --- */
+@media (max-width: 600px) {
+  h1 { font-size: 1.8em; }
+  p { font-size: 1em; }
+  .decor { font-size: 20px; }
+  .box { width: 90px; height: 90px; }
+  
+  /* Ajustar imágenes para que no tapen el texto */
+  .foto {
+    margin: 10px 0;
+    border-width: 3px;
+  }
+}
+
+/* Para pantallas MUY pequeñas (tipo iPhone SE) */
+@media (max-width: 380px) {
+    h1 { font-size: 1.5em; }
+    .foto { width: 180px; height: 180px; }
+    p { font-size: 0.9em; }
 }
